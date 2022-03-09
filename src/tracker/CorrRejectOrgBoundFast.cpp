@@ -11,7 +11,7 @@ void CorrRejectOrgBoundFast::recomputeTargetBoundary(){
 //    QTime time;
 //    time.start();
 
-    pcl::PointCloud<pcl::PointXYZRGBNormal>::ConstPtr target = boost::static_pointer_cast<pcl::registration::DataContainer<pcl::PointXYZRGBNormal, pcl::PointNormal> >(data_container_)->getInputTarget();
+    pcl::PointCloud<pcl::PointXYZRGBNormal>::ConstPtr target = pcl::static_pointer_cast<pcl::registration::DataContainer<pcl::PointXYZRGBNormal, pcl::PointNormal> >(data_container_)->getInputTarget();
 
     if (!target->isOrganized ()){
       PCL_ERROR ("[CorrRejectOrgBoundFast::getRemainingCorrespondences] The target cloud is not organized.\n");
@@ -33,7 +33,7 @@ void CorrRejectOrgBoundFast::recomputeTargetBoundary(){
             for (int x_d = -window_size_/2; x_d <= window_size_/2; ++x_d){
                 for (int y_d = -window_size_/2; y_d <= window_size_/2; ++y_d){
                     if (x + x_d >= 0 && x + x_d < target->width && y + y_d >= 0 && y + y_d < target->height){
-                        if (!pcl_isfinite(target->at(x + x_d, y + y_d).z) || fabs(target->at(x, y).z - target->at(x + x_d, y + y_d).z) > depth_step_threshold_)
+                        if (!isfinite(target->at(x + x_d, y + y_d).z) || fabs(target->at(x, y).z - target->at(x + x_d, y + y_d).z) > depth_step_threshold_)
                             nan_count_tgt ++;
                     }
                 }

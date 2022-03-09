@@ -11,7 +11,7 @@
 #include <QTime>
 
 #ifndef Q_MOC_RUN
-    #include <QVTKWidget.h>
+    #include <QVTKRenderWidget.h>
     #include <pcl/visualization/pcl_visualizer.h>
     #include <pcl/surface/organized_fast_mesh.h>
     #include <Eigen/Eigen>
@@ -22,7 +22,7 @@
 typedef pcl::PointCloud<pcl::PointXYZRGB>::Ptr PointCloudPtr;
 typedef pcl::PointCloud<pcl::PointXYZRGB>::ConstPtr PointCloudConstPtr;
 
-class SLPointCloudWidget : public QVTKWidget {
+class SLPointCloudWidget : public QVTKRenderWidget {
     Q_OBJECT
     public:
         explicit SLPointCloudWidget(QWidget *parent = 0);

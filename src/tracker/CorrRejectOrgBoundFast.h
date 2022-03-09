@@ -17,8 +17,8 @@ class CorrRejectOrgBoundFast : public CorrespondenceRejector{
 
     public:
 
-        typedef boost::shared_ptr<CorrRejectOrgBoundFast> Ptr;
-        typedef boost::shared_ptr<const CorrRejectOrgBoundFast> ConstPtr;
+        typedef shared_ptr<CorrRejectOrgBoundFast> Ptr;
+        typedef shared_ptr<const CorrRejectOrgBoundFast> ConstPtr;
 
         CorrRejectOrgBoundFast(){
             rejection_name_ = "CorrRejectOrgBoundFast";
@@ -37,14 +37,14 @@ class CorrRejectOrgBoundFast : public CorrespondenceRejector{
         setInputSource (const typename pcl::PointCloud<PointT>::ConstPtr &cloud){
             if (!data_container_)
                 data_container_.reset (new DataContainer<PointT>);
-            boost::static_pointer_cast<DataContainer<PointT> > (data_container_)->setInputSource(cloud);
+            static_pointer_cast<DataContainer<PointT> > (data_container_)->setInputSource(cloud);
         }
 
         template <typename PointT> inline void
         setInputTarget (const typename pcl::PointCloud<PointT>::ConstPtr &target){
             if (!data_container_)
                 data_container_.reset (new DataContainer<PointT>);
-            boost::static_pointer_cast<DataContainer<PointT> > (data_container_)->setInputTarget(target);
+            static_pointer_cast<DataContainer<PointT> > (data_container_)->setInputTarget(target);
 
             recomputeTargetBoundary();
         }
@@ -60,7 +60,7 @@ class CorrRejectOrgBoundFast : public CorrespondenceRejector{
         int window_size_;
         float depth_step_threshold_;
 
-        typedef boost::shared_ptr<pcl::registration::DataContainerInterface> DataContainerPtr;
+        typedef shared_ptr<pcl::registration::DataContainerInterface> DataContainerPtr;
         DataContainerPtr data_container_;
 
         pcl::PointCloud<pcl::Label>::Ptr boundary;

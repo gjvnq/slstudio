@@ -20,26 +20,26 @@ TrackerICP::TrackerICP(){
     icp->setEuclideanFitnessEpsilon(1e-4);
 
     // Set up downsampling filter
-    approximateVoxelFilter = boost::shared_ptr< pcl::ApproximateVoxelGrid<pcl::PointXYZRGB> >(new pcl::ApproximateVoxelGrid<pcl::PointXYZRGB>);
+    approximateVoxelFilter = shared_ptr< pcl::ApproximateVoxelGrid<pcl::PointXYZRGB> >(new pcl::ApproximateVoxelGrid<pcl::PointXYZRGB>);
     approximateVoxelFilter->setLeafSize(1.5, 1.5, 1.5);
 
     // Set up correspondance estimator
-    correspondenceEstimator = boost::shared_ptr< CorrEstOrgProjFast<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal> >(new CorrEstOrgProjFast<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal>);
+    correspondenceEstimator = shared_ptr< CorrEstOrgProjFast<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal> >(new CorrEstOrgProjFast<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal>);
     icp->setCorrespondenceEstimation(correspondenceEstimator);
 
     // Set up correspondance rejector (boundary)
-    correspondenceRejectorBoundary = boost::shared_ptr<CorrRejectOrgBoundFast>(new CorrRejectOrgBoundFast);
+    correspondenceRejectorBoundary = shared_ptr<CorrRejectOrgBoundFast>(new CorrRejectOrgBoundFast);
     correspondenceRejectorBoundary->setDepthStepThreshhold(3.0);
     correspondenceRejectorBoundary->setNumberOfBoundaryNaNs(3);
     correspondenceRejectorBoundary->setWindowSize(2); // 8 neighborhood
     icp->addCorrespondenceRejector(correspondenceRejectorBoundary);
 
 //    // Set up correspondance rejector (median)
-//    correspondenceRejectorMedian = boost::shared_ptr<pcl::registration::CorrespondenceRejectorMedianDistance>(new pcl::registration::CorrespondenceRejectorMedianDistance);
+//    correspondenceRejectorMedian = shared_ptr<pcl::registration::CorrespondenceRejectorMedianDistance>(new pcl::registration::CorrespondenceRejectorMedianDistance);
 //    correspondenceRejectorMedian->setMedianFactor(1.5);
 //    icp->addCorrespondenceRejector(correspondenceRejectorMedian);
 
-    transformationEstimator = boost::shared_ptr< pcl::registration::TransformationEstimationPointToPlaneLLS<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal> >(new pcl::registration::TransformationEstimationPointToPlaneLLS<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal>);
+    transformationEstimator = shared_ptr< pcl::registration::TransformationEstimationPointToPlaneLLS<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal> >(new pcl::registration::TransformationEstimationPointToPlaneLLS<pcl::PointXYZRGBNormal, pcl::PointXYZRGBNormal>);
     icp->setTransformationEstimation(transformationEstimator);
 
     lastTransformation = Eigen::Matrix4f::Identity();

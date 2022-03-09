@@ -8,6 +8,8 @@
 #ifndef SLWORKER_H
 #define SLWORKER_H
 
+#include <GL/glew.h>
+
 #include <QObject>
 #include <QThread>
 #include <QMainWindow>

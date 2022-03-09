@@ -7,7 +7,7 @@
 
 TrackerPCL::TrackerPCL(){
 
-    tracker = boost::shared_ptr<TrackerType>(new TrackerType());
+    tracker = pcl::shared_ptr<TrackerType>(new TrackerType());
 
     //Set all parameters
     pcl::tracking::ParticleXYZRPY bin_size;
@@ -41,13 +41,13 @@ TrackerPCL::TrackerPCL(){
 
 
     //Setup coherence object for tracking
-    coherence = boost::shared_ptr<CoherenceType>(new CoherenceType());
+    coherence = pcl::shared_ptr<CoherenceType>(new CoherenceType());
 
-    boost::shared_ptr<pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> > distance_coherence
-      = boost::shared_ptr<pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> > (new pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> ());
+    pcl::shared_ptr<pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> > distance_coherence
+      = pcl::shared_ptr<pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> > (new pcl::tracking::DistanceCoherence<pcl::PointXYZRGB> ());
     //coherence->addPointCoherence (distance_coherence);
 
-    boost::shared_ptr<pcl::search::Octree<pcl::PointXYZRGB> > search (new pcl::search::Octree<pcl::PointXYZRGB> (0.01));
+    pcl::shared_ptr<pcl::search::Octree<pcl::PointXYZRGB> > search (new pcl::search::Octree<pcl::PointXYZRGB> (0.01));
     coherence->setSearchMethod (search);
     coherence->setMaximumDistance (0.01);
 
@@ -55,7 +55,7 @@ TrackerPCL::TrackerPCL(){
 
 
     // Set up downsampling filter
-    approximateVoxelFilter = boost::shared_ptr<FilterType>(new FilterType());
+    approximateVoxelFilter = pcl::shared_ptr<FilterType>(new FilterType());
     approximateVoxelFilter->setLeafSize(20, 20, 20);
 
 }

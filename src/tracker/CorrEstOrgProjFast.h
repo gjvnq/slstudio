@@ -13,8 +13,8 @@ template <typename PointSource, typename PointTarget, typename Scalar = float>
 class CorrEstOrgProjFast : public CorrespondenceEstimationBase <PointSource, PointTarget, Scalar>{
 
     public:
-        typedef boost::shared_ptr< CorrEstOrgProjFast<PointSource, PointTarget, Scalar> > Ptr;
-        typedef boost::shared_ptr< const CorrEstOrgProjFast<PointSource, PointTarget, Scalar> > ConstPtr;
+        typedef shared_ptr< CorrEstOrgProjFast<PointSource, PointTarget, Scalar> > Ptr;
+        typedef shared_ptr< const CorrEstOrgProjFast<PointSource, PointTarget, Scalar> > ConstPtr;
 
         using CorrespondenceEstimationBase<PointSource, PointTarget, Scalar>::initCompute;
         using CorrespondenceEstimationBase<PointSource, PointTarget, Scalar>::input_transformed_;
@@ -29,7 +29,7 @@ class CorrEstOrgProjFast : public CorrespondenceEstimationBase <PointSource, Poi
         CorrEstOrgProjFast(): projection_matrix_(Eigen::Matrix3f::Identity()){
             corr_name_  = "CorrEstOrgProjFast";
         }
-        boost::shared_ptr< CorrespondenceEstimationBase<PointSource, PointTarget, Scalar> > clone() const{}
+        shared_ptr<CorrespondenceEstimationBase<PointSource, PointTarget, Scalar> > clone() const{}
         ~CorrEstOrgProjFast(){}
 
         // Setters for general parameters

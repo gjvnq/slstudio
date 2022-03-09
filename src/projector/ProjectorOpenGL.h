@@ -1,6 +1,5 @@
 #ifndef PROJECTOROPENGL_H
 #define PROJECTOROPENGL_H
-
 #include <iostream>
 #include <vector>
 #include <sys/types.h>

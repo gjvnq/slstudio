@@ -27,7 +27,7 @@
 #include <QFileDialog>
 #include <QKeyEvent>
 
-SLPointCloudWidget::SLPointCloudWidget(QWidget *parent) : QVTKWidget(parent), surfaceReconstruction(false) {
+SLPointCloudWidget::SLPointCloudWidget(QWidget *parent) : QVTKRenderWidget(parent), surfaceReconstruction(false) {
 
     visualizer = new pcl::visualization::PCLVisualizer("PCLVisualizer", false);
     this->SetRenderWindow(visualizer->getRenderWindow());
@@ -103,7 +103,7 @@ void SLPointCloudWidget::keyPressEvent(QKeyEvent *event){
     updatePointCloud(pointCloudPCL);
 
     if(!(('0' <= event->key()) & (event->key() <= '9')))
-        QVTKWidget::keyPressEvent(event);
+        QVTKRenderWidget::keyPressEvent(event);
 }
 
 void SLPointCloudWidget::updatePointCloud(PointCloudConstPtr _pointCloudPCL){

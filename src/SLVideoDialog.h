@@ -8,6 +8,7 @@
 #ifndef SLVideoDialog_H
 #define SLVideoDialog_H
 
+#include <QAction>
 #include <QDialog>
 
 #include <opencv2/opencv.hpp>

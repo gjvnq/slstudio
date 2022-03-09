@@ -3,7 +3,7 @@
 
 #include <vtkRenderWindow.h>
 
-SLPoseWidget::SLPoseWidget(QWidget *parent) : QVTKWidget(parent) {
+SLPoseWidget::SLPoseWidget(QWidget *parent) : QVTKRenderWidget(parent) {
 
     visualizer = new pcl::visualization::PCLVisualizer("PCLVisualizer", false);
     this->SetRenderWindow(visualizer->getRenderWindow());

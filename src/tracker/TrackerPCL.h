@@ -27,9 +27,9 @@ class TrackerPCL : public Tracker {
 
 
     private:
-        boost::shared_ptr<TrackerType> tracker;
-        boost::shared_ptr<CoherenceType> coherence;
-        boost::shared_ptr<FilterType> approximateVoxelFilter;
+        pcl::shared_ptr<TrackerType> tracker;
+        pcl::shared_ptr<CoherenceType> coherence;
+        pcl::shared_ptr<FilterType> approximateVoxelFilter;
         //Eigen::Matrix4f lastTransformation;
 
         pcl::PointCloud<pcl::PointXYZRGBNormal>::Ptr refPointCloudNormals;
