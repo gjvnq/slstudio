@@ -10,6 +10,11 @@ QT       += core gui widgets opengl testlib
 CONFIG   += qt thread sse2
 TARGET = SLStudio
 TEMPLATE = app
+DESTDIR = bin
+OBJECTS_DIR = build
+MOC_DIR = build
+RCC_DIR = build
+UI_DIR = build
 
 FORMS    += SLStudio.ui \
         SLPreferenceDialog.ui \
@@ -255,13 +260,13 @@ win32 {
 }
 # Mac OS X
 macx {
+    CONFIG += link_pkgconfig c++14
+    PKGCONFIG += opencv boost hidapi libdc1394-2 pcl_visualization-1.12 pcl_filters-1.12 pcl_search-1.12 pcl_surface-1.12 pcl_tracking-1.12 pcl_registration-1.12
+
     INCLUDEPATH += /usr/local/opt/vtk/include/vtk-9.1
     LIBS += -L/usr/local/lib/ -L/usr/local/opt/vtk/lib/ -lvtkCommonCore-9.1 -lvtkGUISupportQt-9.1 -lvtkCommonDataModel-9.1 -lvtkIOImage-9.1 -lvtkFiltersCore-9.1 -lvtkFiltersHybrid-9.1 -lvtkInteractionWidgets-9.1 -lvtkRenderingCore-9.1 -lvtkCommonExecutionModel-9.1 -lvtkCommonMath-9.1 -lvtkFiltersGeometry-9.1
-    CONFIG += link_pkgconfig
-    PKGCONFIG += opencv boost hidapi libdc1394-2 pcl_visualization-1.12 pcl_filters-1.12 pcl_search-1.12 pcl_surface-1.12 pcl_tracking-1.12 pcl_registration-1.12
+
     DEFINES += BOOST_TT_HAS_OPERATOR_HPP_INCLUDED
-    CONFIG += c++14
-    QMAKE_CXXFLAGS += -Wno-unused-parameter -Wno-deprecated-declarations -Wno-deprecated-copy -Wno-sign-compare -Wno-max-unsigned-zero
 }
 
 
