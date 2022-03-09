@@ -1,5 +1,6 @@
+bin/
 build/
 Makefile
 
-
+.qmake.stash
 *.user

@@ -15,6 +15,7 @@ OBJECTS_DIR = build
 MOC_DIR = build
 RCC_DIR = build
 UI_DIR = build
+CONFIG += force_debug_info
 
 FORMS    += SLStudio.ui \
         SLPreferenceDialog.ui \
