@@ -260,6 +260,7 @@ win32 {
 }
 # Mac OS X
 macx {
+    QMAKE_INFO_PLIST = Info.plist
     CONFIG += link_pkgconfig c++14
     PKGCONFIG += opencv boost hidapi libdc1394-2 pcl_visualization-1.12 pcl_filters-1.12 pcl_search-1.12 pcl_surface-1.12 pcl_tracking-1.12 pcl_registration-1.12
 
