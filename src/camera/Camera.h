@@ -1,6 +1,8 @@
 #ifndef CAMERA_H
 #define CAMERA_H
 
+#define WITH_CAMERAOPENCV 1
+
 #include <iostream>
 #include <vector>
 
