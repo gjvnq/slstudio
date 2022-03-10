@@ -41,6 +41,7 @@ HEADERS  += SLStudio.h \
         SLTriangulatorWorker.h \
         SLTraceWidget.h \
         camera/Camera.h \
+        camera/CameraOpenCV.h \
         projector/Projector.h \
         projector/ProjectorOpenGL.h \
         projector/OpenGLContext.h \
@@ -99,6 +100,7 @@ SOURCES += main.cpp \
         SLTriangulatorWorker.cpp \
         SLTraceWidget.cpp \
         camera/Camera.cpp \
+        camera/CameraOpenCV.cpp \
         projector/ProjectorOpenGL.cpp \
         codec/phaseunwrap.cpp \
         codec/phasecorr.cpp \

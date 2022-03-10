@@ -2,7 +2,7 @@
 #define CAMERAOPENCV_H
 
 #include "Camera.h"
-#include <opencv2/videoio.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #define CAMERAOPENCV_MAX_CAMS 10
 
 using namespace std;
@@ -23,8 +23,9 @@ class CameraOpenCV : public Camera {
         size_t getFrameHeight();
         ~CameraOpenCV();
     private:
-        VideoCapture *cam;
-        cv::OutputArray *raw_img;
+        cv::VideoCapture *cam;
+        cv::Mat *raw_img;
+        size_t total_frame_bytes;
         // dc1394_t *context;
         // dc1394camera_t *cam;
         // dc1394video_mode_t video_mode;
